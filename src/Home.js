@@ -28,24 +28,7 @@ const Home = () => {
       {!isloading && !fetchError && (
         searchResults.length ? (
           <Feed posts={searchResults} />
-        ) : (
-          <>
-            <Skeleton height={30} width={200} />
-            <Skeleton count={2} />
-            <Skeleton height={30} width={200} />
-            <Skeleton count={2} />
-            <Skeleton height={30} width={200} />
-            <Skeleton count={2} />
-            <Skeleton height={30} width={200} />
-            <Skeleton count={2} />
-            <Skeleton height={30} width={200} />
-            <Skeleton count={2} />
-            <Skeleton height={30} width={200} />
-            <Skeleton count={2} />
-
-          </>
-        )
-      )}
+        ) : "No posts found here!!"     )}
 
     </ main>
   )
