@@ -1,45 +1,44 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Users from './Users';
-import Comments from './Comments';
+import Home from './Home';
 import Posts from './Posts';
-import Form from './Form';
-import List from './List';
-import Listitem from './Listitem';
+import About from './About';
+import { Routes, Route, Link, useParams } from 'react-router-dom';
+import Postpage from './Postpage';
+import Nav from './Nav';
+import Header from './Header';
+import Newpost from './Newpost';
+import api from './api/posts';
+
+import Editpost from './Editpost';
+import Footer from './Footer';
+import { DataProvider } from './context/DataContext';
+
+
 
 function App() {
-  const API_URL = "https://jsonplaceholder.typicode.com/"
-
-  const [userdata, setusers] = useState("users")
-  const [listitems, setlistitems] = useState([])
-
-
-
-  useEffect(() => {
-    const handleusers = async () => {
-      try {
-        const response = await fetch(`${API_URL}${userdata}`);
-        if (!response.ok) throw new Error('Something went wrong!');
-        const data = await response.json();
-        setlistitems(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    handleusers();
-
-  }, [userdata])
 
 
   return (
     <div className="App">
+      <DataProvider>     <Header title="Share Zone" />
+        <Nav />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<Footer />} />
 
-      <div className='apitab'>
-        <Form setusers={setusers} />
-        {/* <Posts listdata={listitems} setusers={setusers}  userdata={userdata}/>
-      <Comments listdata={listitems} setusers={setusers} userdata={userdata} /> */}
-      </div>
-      <Listitem listdata={listitems} />
+          <Route path='posts'>
+            <Route index element={<Newpost />} />
+            <Route path=':id' element={<Postpage />} />
+            <Route path='edit/:id' element={<Editpost />} />
+
+          </Route>
+        </Routes>
+        <About />
+
+      </DataProvider>
+
+
 
     </div>
   );
