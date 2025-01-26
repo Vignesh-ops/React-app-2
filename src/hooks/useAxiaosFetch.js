@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 const useAxiaosFetch = (dataurl) => {
+  console.log(dataurl,"****URL***")
   const [data, setData] = useState([]);
   const [isloading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(null);
