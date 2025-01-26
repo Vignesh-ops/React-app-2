@@ -28,12 +28,7 @@ const Home = () => {
       {!isloading && !fetchError && (
         searchResults.length ? (
           <Feed posts={searchResults} />
-<<<<<<< HEAD
         ) : "No posts found here!!"     )}
-=======
-        ) : "No posts available"
-      )}
->>>>>>> 64d5d3b (go backend added)
 
     </ main>
   )
