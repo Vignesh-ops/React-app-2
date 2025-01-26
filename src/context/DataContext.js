@@ -7,7 +7,7 @@ import format from "date-fns/format";
 
 const DataContext = createContext({}); 
 const URL =window.location.hostname === "localhost"
-? "http://localhost:3000"
+? "http://localhost:8080"
 : "https://server-production-33bb.up.railway.app"
 const DataProvider = ({children}) => {
   const { data, isloading, fetchError } = useAxiaosFetch(`${URL}/posts`);
@@ -38,17 +38,15 @@ const DataProvider = ({children}) => {
       const id = posts.length + 1;
       const datetime = format(new Date(), 'MMMM dd, yyyy pp')
       const newpost = {
-        id, title: title, body: body, datetime: datetime
+        title: title, body: body, datetime: datetime
       }
       try {
         const response = await api.post('/posts', newpost);
-        alert("Added!")
-        const updatedpost = [...posts, response.data];
-        setposts(updatedpost);
+        const updatedpost = [...posts, response.data.post];
+         setposts(updatedpost);
         setTitle('');
         setBody('');
-        Navigate('/');
-  
+          Navigate('/');
       } catch (err) {
         console.log("error", err)
       }

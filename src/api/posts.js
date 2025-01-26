@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: window.location.hostname === "localhost"
-  ? "http://localhost:3000"
+  ? "http://localhost:8080"
   : "https://server-production-33bb.up.railway.app",
   headers: {
     "Content-Type": "application/json",
