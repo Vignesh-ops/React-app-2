@@ -6,9 +6,11 @@ import api from '../api/posts'
 import format from "date-fns/format";
 
 const DataContext = createContext({}); 
-
+const URL =window.location.hostname === "localhost"
+? "http://localhost:3000"
+: "https://server-production-33bb.up.railway.app"
 const DataProvider = ({children}) => {
-  const { data, isloading, fetchError } = useAxiaosFetch(`/posts`);
+  const { data, isloading, fetchError } = useAxiaosFetch(`${URL}/posts`);
   const [posts, setposts] = useState([]);
     const [search, setSearchip] = useState('')
     const [searchResults, setSearch] = useState([]);
