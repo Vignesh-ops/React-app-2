@@ -8,7 +8,7 @@ import format from "date-fns/format";
 const DataContext = createContext({}); 
 
 const DataProvider = ({children}) => {
-    const { data, isloading, fetchError } = useAxiaosFetch("https://jsonplaceholder.typicode.com/posts");
+    const { data, isloading, fetchError } = useAxiaosFetch("http://localhost:8080/posts");
     const [posts, setposts] = useState([]);
     const [search, setSearchip] = useState('');
     const [searchResults, setSearch] = useState([]);
