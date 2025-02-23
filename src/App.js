@@ -12,6 +12,8 @@ import api from './api/posts';
 
 import Editpost from './Editpost';
 import Footer from './Footer';
+import Login from './AuthPage/Login';
+import Register from './AuthPage/Register';
 import { DataProvider } from './context/DataContext';
 
 
@@ -21,10 +23,13 @@ function App() {
 
   return (
     <div className="App">
-      <DataProvider>     <Header title="Share Zone" />
+      <DataProvider>    
+         <Header title="Share Zone" />
         <Nav />
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path='/about' element={<Footer />} />
 
           <Route path='posts'>
